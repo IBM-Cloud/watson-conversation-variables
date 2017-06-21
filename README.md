@@ -34,6 +34,27 @@ Input:
 Returned:
 > You have 54.0 USD
 
+### Nested evaluation of variables
+Sometimes it is necessary to first evaluate one variable and then use the result as input to another evaluation. In some programming / scripting language there is a special method or operator for this. An example is the [`eval` function](https://docs.python.org/3.5/library/functions.html#eval) in Python. But how can you do something like this in Watson Conversation? There, evaluations are done inside the [`<? ?>` expression](https://www.ibm.com/watson/developercloud/doc/conversation/expression-language.html#evaluation).
+
+
+The upper dialog node consists of an empty response (output). Only the context is evaluated and a new value assigned to the variables `access` and `result`:
+```
+{
+  "context": {
+    "access": "<? $myproperties['one'] ?>",
+    "result": "<? $myproperties['two'] * @sys-number ?>"
+  },
+  "output": {}
+}
+```
+
+A subnode with the following response performs the second set of evaluations. It uses `access` and `result` as input.
+`This is my nested response: <? context['access'] ?>. The result is <? context['result'] + context['result'] ?>.`
+
+If the dialog input is `nested 8` and there is an existing context with `myproperties.one="one"` and `myproperties.two=2`, the following result is returned:   
+> This is my nested response: one. The result is 32.
+
 # Documentation and Resources
 Here are some useful links to documentation and other resources:
 * Watson Conversation service: https://www.ibm.com/watson/developercloud/doc/conversation/index.html
