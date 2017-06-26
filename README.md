@@ -38,7 +38,7 @@ Returned:
 Sometimes it is necessary to first evaluate one variable and then use the result as input to another evaluation. In some programming / scripting language there is a special method or operator for this. An example is the [`eval` function](https://docs.python.org/3.5/library/functions.html#eval) in Python. But how can you do something like this in Watson Conversation? There, evaluations are done inside the [`<? ?>` expression](https://www.ibm.com/watson/developercloud/doc/conversation/expression-language.html#evaluation).
 
 
-The upper dialog node consists of an empty response (output). Only the context is evaluated and a new value assigned to the variables `access` and `result`:
+The upper dialog node consists of an empty response (output). Only the context is evaluated and a new value assigned to the variables `access` and `result` (based on a computation):
 ```
 {
   "context": {
@@ -55,9 +55,21 @@ A subnode with the following response performs the second set of evaluations. It
 If the dialog input is `nested 8` and there is an existing context with `myproperties.one="one"` and `myproperties.two=2`, the following result is returned:   
 > This is my nested response: one. The result is 32.
 
+### Conditions / predicates in the response
+Dialog nodes in IBM Watson Conversation allow to check conditions (or predicates). Conditions control whether the node qualifies. Conditions can also be placed ahead of a response block inside a dialog node. In addition to that, conditions can even be placed and evaluated inside individual responses.
+
+The following is a reponse string. It checks whether the location of entities in the input string and then returns one of two strings. It uses condensed `ìf-then-else` logic, a so-called [ternary operator](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html):
+```
+<? entities['airport'][0].location[0]<entities['airport'][1].location[0] ?
+'First, then second' : 'Second comes first' ?>
+```
+
+https://www.ibm.com/watson/developercloud/doc/conversation/expression-language.html
+
 # Documentation and Resources
 Here are some useful links to documentation and other resources:
 * Watson Conversation service: https://www.ibm.com/watson/developercloud/doc/conversation/index.html
+* Watson Conversation service, expression language: https://www.ibm.com/watson/developercloud/doc/conversation/expression-language.html
 * API for Watson Conversation service: https://www.ibm.com/watson/developercloud/conversation/api/v1/#introduction
 * Python SDK, Watson Developer Cloud: https://github.com/watson-developer-cloud/python-sdk
 * Node SDK, Watson Developer Cloud: https://github.com/watson-developer-cloud/node-sdk
