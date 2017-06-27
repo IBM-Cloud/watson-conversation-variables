@@ -1,0 +1,291 @@
+{
+  "status": "Available",
+  "intents": [
+    {
+      "description": null,
+      "intent": "something",
+      "examples": [
+        {
+          "text": "What is the weather today?",
+          "updated": "2017-06-27T09:16:56.899Z",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "text": "How is the weather today?",
+          "updated": "2017-06-27T09:16:56.899Z",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "text": "Will it rain?",
+          "updated": "2017-06-27T09:16:56.899Z",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "text": "Will there be sunshine tomorrow?",
+          "updated": "2017-06-27T09:16:56.899Z",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "text": "Is it ok to wear sandals?",
+          "updated": "2017-06-27T09:16:56.899Z",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "text": "Rain or shine?",
+          "updated": "2017-06-27T09:16:56.899Z",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "text": "What is up",
+          "updated": "2017-06-27T09:16:56.899Z",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "text": "How are you today?",
+          "updated": "2017-06-27T09:16:56.899Z",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "text": "Tell me about you",
+          "updated": "2017-06-27T09:16:56.899Z",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "text": "I have money",
+          "updated": "2017-06-27T09:16:56.899Z",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "text": "I earned money",
+          "updated": "2017-06-27T09:16:56.899Z",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "text": "My timezone is CEST",
+          "updated": "2017-06-27T09:16:56.899Z",
+          "created": "2017-06-27T09:16:56.899Z"
+        }
+      ],
+      "created": "2017-06-27T09:16:56.899Z"
+    }
+  ],
+  "name": "Variables",
+  "language": "en",
+  "description": "testing context variables and system entities", 
+  "entities": [
+    {
+      "updated": "2017-06-27T09:16:56.899Z",
+      "description": null,
+      "created": "2017-06-27T09:16:56.899Z",
+      "entity": "weather",
+      "values": [
+        {
+          "updated": "2017-06-27T09:16:56.899Z",
+          "metadata": null,
+          "synonyms": [],
+          "value": "temperature",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "updated": "2017-06-27T09:16:56.899Z",
+          "metadata": null,
+          "synonyms": [],
+          "value": "sunshine",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "updated": "2017-06-27T09:16:56.899Z",
+          "metadata": null,
+          "synonyms": [
+            "downpour",
+            "drizzle",
+            "snow"
+          ],
+          "value": "rain",
+          "created": "2017-06-27T09:16:56.899Z"
+        }
+      ],
+      "metadata": null
+    },
+    {
+      "updated": "2017-06-27T09:16:56.899Z",
+      "description": null,
+      "created": "2017-06-27T09:16:56.899Z",
+      "entity": "sys-person",
+      "values": [],
+      "metadata": null
+    },
+    {
+      "updated": "2017-06-27T09:16:56.899Z",
+      "description": null,
+      "created": "2017-06-27T09:16:56.899Z",
+      "entity": "money",
+      "values": [
+        {
+          "updated": "2017-06-27T09:16:56.899Z",
+          "metadata": null,
+          "synonyms": [
+            "cash"
+          ],
+          "value": "money",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "updated": "2017-06-27T09:16:56.899Z",
+          "metadata": null,
+          "synonyms": [
+            "pesos",
+            "dollar",
+            "euro",
+            "EUR"
+          ],
+          "value": "currency",
+          "created": "2017-06-27T09:16:56.899Z"
+        }
+      ],
+      "metadata": null
+    },
+    {
+      "updated": "2017-06-27T09:16:56.899Z",
+      "description": null,
+      "created": "2017-06-27T09:16:56.899Z",
+      "entity": "sys-currency",
+      "values": [],
+      "metadata": null
+    },
+    {
+      "updated": "2017-06-27T09:16:56.899Z",
+      "description": null,
+      "created": "2017-06-27T09:16:56.899Z",
+      "entity": "sys-location",
+      "values": [],
+      "metadata": null
+    },
+    {
+      "updated": "2017-06-27T09:16:56.899Z",
+      "description": null,
+      "created": "2017-06-27T09:16:56.899Z",
+      "entity": "sys-date",
+      "values": [],
+      "metadata": null
+    },
+    {
+      "updated": "2017-06-27T09:16:56.899Z",
+      "description": null,
+      "created": "2017-06-27T09:16:56.899Z",
+      "entity": "sys-number",
+      "values": [],
+      "metadata": null
+    },
+    {
+      "updated": "2017-06-27T09:16:56.899Z",
+      "description": null,
+      "created": "2017-06-27T09:16:56.899Z",
+      "entity": "sys-percentage",
+      "values": [],
+      "metadata": null
+    },
+    {
+      "updated": "2017-06-27T09:16:56.899Z",
+      "description": null,
+      "created": "2017-06-27T09:16:56.899Z",
+      "entity": "animals",
+      "values": [
+        {
+          "updated": "2017-06-27T09:16:56.899Z",
+          "metadata": null,
+          "synonyms": [],
+          "value": "cat",
+          "created": "2017-06-27T09:16:56.899Z"
+        },
+        {
+          "updated": "2017-06-27T09:16:56.899Z",
+          "metadata": null,
+          "synonyms": [],
+          "value": "dog",
+          "created": "2017-06-27T09:16:56.899Z"
+        }
+      ],
+      "metadata": null
+    },
+    {
+      "updated": "2017-06-27T09:16:56.899Z",
+      "description": null,
+      "created": "2017-06-27T09:16:56.899Z",
+      "entity": "sys-time",
+      "values": [],
+      "metadata": null
+    }
+  ],
+  "counterexamples": [],
+  "dialog_nodes": [
+    {
+      "updated": "2017-06-27T13:21:45.337Z",
+      "description": null,
+      "parent": null,
+      "title": null,
+      "created": "2017-06-27T09:16:56.899Z",
+      "dialog_node": "Something is happening",
+      "previous_sibling": "Welcome",
+      "context": {
+        "num_entities": "<? entities.size() ?>"
+      },
+      "output": {
+        "text": {
+          "values": [
+            "All of <? entities.size() ?> entities: <? entities ?>. They include \"sys-location\" (<? entities['sys-location'] ?>), \"sys-date\" (<? entities['sys-date'] ?>), \"sys-number\" (<? entities['sys-number'] ?>), \"sys-person\" (<? entities['sys-person'] ?>) and more. This is stored: <? $num_entities ?>."
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "metadata": null,
+      "conditions": "#something",
+      "go_to": null
+    },
+    {
+      "updated": "2017-06-27T09:16:56.899Z",
+      "description": null,
+      "parent": null,
+      "title": null,
+      "created": "2017-06-27T09:16:56.899Z",
+      "dialog_node": "Welcome",
+      "previous_sibling": null,
+      "context": null,
+      "output": {
+        "text": {
+          "values": [
+            "Hello. How can I help you?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": null,
+      "conditions": "welcome",
+      "go_to": null
+    },
+    {
+      "updated": "2017-06-27T09:16:56.899Z",
+      "description": null,
+      "parent": null,
+      "title": null,
+      "created": "2017-06-27T09:16:56.899Z",
+      "dialog_node": "Anything else",
+      "previous_sibling": "Something is happening",
+      "context": null,
+      "output": {
+        "text": {
+          "values": [
+            "I didn't understand. You can try rephrasing.",
+            "Can you reword your statement? I'm not understanding.",
+            "I didn't get your meaning."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": null,
+      "conditions": "anything_else",
+      "go_to": null
+    }
+  ],
+  "metadata": null
+}

@@ -22,6 +22,7 @@ Input:
 Returned:
 > All of 5 entities: San Francisco, Germany, Henrik, 2017-06-19, 20. They include "sys-location" (San Francisco, Germany), "sys-date" (2017-06-19), "sys-number" (20), "sys-person" (Henrik) and more
 
+The example is part of the [`simple-variables.json`](workspaces/simple-variables.json) workspace file. You can import the file as new workspace into IBM Watson Conversation.
 
 ### Working with Currency
 In this example a condition first checks that a system entity `sys-currency` is present, then that exactly two currency values are included in the user input and, as third condition, that the currency units match. In the response string the two entered values are added.
