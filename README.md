@@ -3,6 +3,10 @@ The [IBM Watson Conversation service](https://www.ibm.com/watson/developercloud/
 
 In this repository we are going to collect samples that demonstrate how those variables and metadata can be put to productive work.
 
+The samples and the general syntax are described in the following blog posts. They can serve as additional source of information:
+ * [Building chatbots: more tips and tricks](https://www.ibm.com/blogs/bluemix/2017/06/building-chatbots-tips-tricks/)
+ * [More Tips and Tricks for Building Chatbots](http://blog.4loeser.net/2017/06/more-tips-and-tricks-for-building.html)
+
 # Samples
 The following sample scenarios demonstrate how context variables, intents and entities including system entities can be used for customized dialogs.
 
