@@ -81,6 +81,7 @@ The application code would then search for and replace the designated markers wi
 ```
 Hello Henrik, it is 16:54:31.
 ```
+A simple example of the above can be seen in the [TJBot "Tell the time" recipe](https://github.com/damiancummins/tell_the_time). In the function [`tellTheTime`](https://github.com/DamianCummins/tell_the_time/blob/master/tellTheTime.js) the marker `todays_date` is replaced with the current time for a specific timezone.
 
 In an advanced version of using markers, the entire response only consists of a marker. It would be replaced by the application by an answer that, maybe, is retrieved from a database or built from a template and data coming from various systems. The Watson Conversation Service would analyze and process the user input, but only return with a hint (the marker) on how to answer.   
 ```
