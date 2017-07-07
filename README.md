@@ -71,6 +71,27 @@ The following is a reponse string. It checks whether the location of entities in
 
 https://www.ibm.com/watson/developercloud/doc/conversation/expression-language.html
 
+### Replaced Markers
+An alternative to embedding expressions into responses is to use special markers in the regular text:   
+```
+Hello USER_NAME, it is CURRENT_TIME.
+```
+
+The application code would then search for and replace the designated markers with information carried in the application. This could be overall simpler to do, especially when more complex data and structures are retrieved from backend systems and more sophisticated formatting and processing of that data is needed.   
+```
+Hello Henrik, it is 16:54:31.
+```
+
+In an advanced version of using markers, the entire response only consists of a marker. It would be replaced by the application by an answer that, maybe, is retrieved from a database or built from a template and data coming from various systems. The Watson Conversation Service would analyze and process the user input, but only return with a hint (the marker) on how to answer.   
+```
+PROVIDE_TIME
+```
+The above could be turned into:   
+```
+Hello Henrik, it is 16:54:31.
+```
+
+
 # Documentation and Resources
 Here are some useful links to documentation and other resources:
 * Watson Conversation service: https://www.ibm.com/watson/developercloud/doc/conversation/index.html
