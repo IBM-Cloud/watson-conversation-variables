@@ -10,10 +10,10 @@ The samples and the general syntax are described in the following blog posts. Th
 # Samples
 The following sample scenarios demonstrate how context variables, intents and entities including system entities can be used for customized dialogs.
 
-* [Access to system entities](#access-to-system-entities))
+* [Access to system entities](#access-to-system-entities)
 * [Working with Currency](#working-with-currency)
 * [Nested evaluation of variables](#nested-evaluation-of-variables)
-* [Conditions / predicates in the response](#conditions-predicates-in-the-response)
+* [Conditions and predicates in the response](#conditions-and-predicates-in-the-response)
 * [Replaced Markers](#replaced-markers)
 * [Random output from variables](#random-output-from-variables)
 
@@ -67,7 +67,7 @@ A subnode with the following response performs the second set of evaluations. It
 If the dialog input is `nested 8` and there is an existing context with `myproperties.one="one"` and `myproperties.two=2`, the following result is returned:   
 > This is my nested response: one. The result is 32.
 
-### Conditions / predicates in the response
+### Conditions and predicates in the response
 Dialog nodes in IBM Watson Conversation allow to check conditions (or predicates). Conditions control whether the node qualifies. Conditions can also be placed ahead of a response block inside a dialog node. In addition to that, conditions can even be placed and evaluated inside individual responses.
 
 The following is a reponse string. It checks whether the location of entities in the input string and then returns one of two strings. It uses condensed `ìf-then-else` logic, a so-called [ternary operator](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html):
