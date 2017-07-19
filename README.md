@@ -10,6 +10,13 @@ The samples and the general syntax are described in the following blog posts. Th
 # Samples
 The following sample scenarios demonstrate how context variables, intents and entities including system entities can be used for customized dialogs.
 
+* [Access to system entities](#access-to-system-entities))
+* [Working with Currency](#working-with-currency)
+* [Nested evaluation of variables](#nested-evaluation-of-variables)
+* [Conditions / predicates in the response](#conditions-predicates-in-the-response)
+* [Replaced Markers](#replaced-markers)
+* [Random output from variables](#random-output-from-variables)
+
 ### Access to system entities
 The IBM Watson Conversation service supports several system entities. They are predefined entities which can be enabled to allow simple identification of typical user input. The following response string shows how the entities can be accessed to form an answer.
 
@@ -91,7 +98,13 @@ The above could be turned into:
 ```
 Hello Henrik, it is 16:54:31.
 ```
-
+### Random output from variables
+Sometimes, when using context variables or system metadata, you want to use a random (or other) portion of it in a response or when assigning a context variable. The following code shows how a mathematical function, here `random()`, is used to obtain an array entry and insert it into the response text:
+```
+Here is a random entity:
+ <? entities[(entities.size() * T(java.lang.Math).random()).intValue()].value ?>
+```
+In the code the global entity array as part of the dialog metadata is used. A random number within the range of the array size is computed. The entity value is then accessed and printed.
 
 # Documentation and Resources
 Here are some useful links to documentation and other resources:
