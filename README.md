@@ -106,6 +106,12 @@ Here is a random entity:
 ```
 In the code the global entity array as part of the dialog metadata is used. A random number within the range of the array size is computed. The entity value is then accessed and printed.
 
+### Zeroes at the Slots
+[Slots](https://console.bluemix.net/docs/services/conversation/dialog-build.html#slots) are a great way to gather several pieces of information and to easily declare what is needed. However, sometimes "ease of use" and (mathematical) logic are not friendly to each other. The following is such an example: [Waiting for `@sys-number` to accept a `0` (zero)](https://stackoverflow.com/questions/45302644/ibm-watson-slots-wont-accept-0)    
+
+The condition `@sys-number` is in fact a short hand syntax for condition `entities['sys-number'].value`. When `0` is sent the condition is evaluated to `false` as `0` is treated as a `false` by the expression language evaluator in Watson Conversation Service. Now this is not a desired behavior in this case. To prevent this, you can use `entities['sys-number']` in the condition that will return `true` every time `@sys-number` entity is recognized in the input. The [WCS documentation has some related usage tips](https://console.bluemix.net/docs/services/conversation/system-entities.html#sys-number).
+
+
 # Documentation and Resources
 Here are some useful links to documentation and other resources:
 * Watson Conversation service: https://www.ibm.com/watson/developercloud/doc/conversation/index.html
