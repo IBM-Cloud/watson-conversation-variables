@@ -16,6 +16,7 @@ The following sample scenarios demonstrate how context variables, intents and en
 * [Conditions and predicates in the response](#conditions-and-predicates-in-the-response)
 * [Replaced Markers](#replaced-markers)
 * [Random output from variables](#random-output-from-variables)
+* [Zeroes at the Slots](#zeroes-at-the-slots)
 
 ### Access to system entities
 The IBM Watson Conversation service supports several system entities. They are predefined entities which can be enabled to allow simple identification of typical user input. The following response string shows how the entities can be accessed to form an answer.
