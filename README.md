@@ -17,6 +17,7 @@ The following sample scenarios demonstrate how context variables, intents and en
 * [Replaced Markers](#replaced-markers)
 * [Random output from variables](#random-output-from-variables)
 * [Zeroes at the Slots](#zeroes-at-the-slots)
+* [Slack URIs as variable](#slack-uris-as-variables)
 
 ### Access to system entities
 The IBM Watson Conversation service supports several system entities. They are predefined entities which can be enabled to allow simple identification of typical user input. The following response string shows how the entities can be accessed to form an answer.
@@ -111,6 +112,9 @@ In the code the global entity array as part of the dialog metadata is used. A ra
 [Slots](https://console.bluemix.net/docs/services/conversation/dialog-build.html#slots) are a great way to gather several pieces of information and to easily declare what is needed. However, sometimes "ease of use" and (mathematical) logic are not friendly to each other. The following is such an example: [Waiting for `@sys-number` to accept a `0` (zero)](https://stackoverflow.com/questions/45302644/ibm-watson-slots-wont-accept-0)    
 
 The condition `@sys-number` is in fact a short hand syntax for condition `entities['sys-number'].value`. When `0` is sent the condition is evaluated to `false` as `0` is treated as a `false` by the expression language evaluator in Watson Conversation Service. Now this is not a desired behavior in this case. To prevent this, you can use `entities['sys-number']` in the condition that will return `true` every time `@sys-number` entity is recognized in the input. The [WCS documentation has some related usage tips](https://console.bluemix.net/docs/services/conversation/system-entities.html#sys-number).
+
+### Slack URIs as variables
+Lately, I have been using Slack integrations with Watson Conversation. One is the [Conversation connector](https://github.com/watson-developer-cloud/conversation-connector). When trying to retrieve and identify URIs, e.g. web addresses or email addresses, coming from Slack as a [patterned entity in Watson Conversation](https://console.bluemix.net/docs/services/conversation/entities.html#creating-entities), I initially failed. The reason is that Slack formats the URIs into a style like `<https://blog.4loeser.net|blog.4loeser.net>`. Thus, I am using the following pattern to define email and web address entities: `<[A-Za-z0-9._|:%@\/]+>`.
 
 
 # Documentation and Resources
