@@ -18,6 +18,7 @@ The following sample scenarios demonstrate how context variables, intents and en
 * [Random output from variables](#random-output-from-variables)
 * [Zeroes at the Slots](#zeroes-at-the-slots)
 * [Slack URIs as variable](#slack-uris-as-variables)
+* [Check is context variable is defined](#context-variable-defined)
 
 ### Access to system entities
 The IBM Watson Conversation service supports several system entities. They are predefined entities which can be enabled to allow simple identification of typical user input. The following response string shows how the entities can be accessed to form an answer.
@@ -116,6 +117,12 @@ The condition `@sys-number` is in fact a short hand syntax for condition `entiti
 ### Slack URIs as variables
 Lately, I have been using Slack integrations with Watson Conversation. One is the [Conversation connector](https://github.com/watson-developer-cloud/conversation-connector). When trying to retrieve and identify URIs, e.g. web addresses or email addresses, coming from Slack as a [patterned entity in Watson Conversation](https://console.bluemix.net/docs/services/conversation/entities.html#creating-entities), I initially failed. The reason is that Slack formats the URIs into a style like `<https://blog.4loeser.net|blog.4loeser.net>`. Thus, I am using the following pattern to define email and web address entities: `<[A-Za-z0-9._|:%@\/]+>`.
 
+### Context Variable Defined
+Sometimes it is not clear whether a certain value or context variable has been entered. One example is when working with slots and a handler is used to exit the input process. To check whether a context variable has been defined and to give a conditional answer, the following check can be used:   
+```
+"<? context.myVariable? 'Great. I have the following: '+context.myVariable+'.' : 'No information present' ?>"
+```
+The question mark checks for existence and if present processes the first answer and, if not, the second option.
 
 # Documentation and Resources
 Here are some useful links to documentation and other resources:
