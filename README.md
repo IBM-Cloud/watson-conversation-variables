@@ -19,6 +19,7 @@ The following sample scenarios demonstrate how context variables, intents and en
 * [Zeroes at the Slots](#zeroes-at-the-slots)
 * [Slack URIs as variable](#slack-uris-as-variables)
 * [Check is context variable is defined](#context-variable-defined)
+* [Delete context variables](#delete-context-variables)
 
 ### Access to system entities
 The IBM Watson Conversation service supports several system entities. They are predefined entities which can be enabled to allow simple identification of typical user input. The following response string shows how the entities can be accessed to form an answer.
@@ -123,6 +124,17 @@ Sometimes it is not clear whether a certain value or context variable has been e
 "<? context.myVariable? 'Great. I have the following: '+context.myVariable+'.' : 'No information present' ?>"
 ```
 The question mark checks for existence and if present processes the first answer and, if not, the second option.
+
+### Delete Context Variables
+At the end of processing input it often is necessary to clean up or reset the processing environment. This can be done by setting context variables to empty or null values. However, it is quite effective to [remove the variable](https://console.bluemix.net/docs/services/conversation/dialog-runtime.html#context-delete), so the environment is fresh again:
+```
+{
+  "output": {
+    "text": {},
+    "deleted": "<? context.remove('eventName') ?> <? context.remove('queryPredicate') ?>"
+  }
+}
+```
 
 # Documentation and Resources
 Here are some useful links to documentation and other resources:
