@@ -1,11 +1,16 @@
 # Using variables with IBM Watson Conversation service
-The [IBM Watson Conversation service](https://www.ibm.com/watson/developercloud/doc/conversation/) on [IBM Bluemix](http://www.ibm.com/cloud-computing/bluemix/) is the foundation for building powerful chatbots and dialog-based systems. Core to its flexibility and versatility is a programming API and the ability to pass variables through the cognitive system. It supports user-provided context variables, allows the access to identified intents and entities including the annotations (what was the system thinking). Moreover, it features predefined system entities which can be enabled and significantly simplify detection of numbers, locations, people, dates and more within the ongoing conversation.
+The [IBM Watson Conversation service](https://www.ibm.com/watson/developercloud/doc/conversation/) on [IBM Cloud](http://www.ibm.com/cloud) is the foundation for building powerful chatbots and dialog-based systems. Core to its flexibility and versatility is a programming API and the ability to pass variables through the cognitive system. It supports user-provided context variables, allows the access to identified intents and entities including the annotations (what was the system thinking). Moreover, it features predefined system entities which can be enabled and significantly simplify detection of numbers, locations, people, dates and more within the ongoing conversation.
 
 In this repository we are going to collect samples that demonstrate how those variables and metadata can be put to productive work.
 
 The samples and the general syntax are described in the following blog posts. They can serve as additional source of information:
  * [Building chatbots: more tips and tricks](https://www.ibm.com/blogs/bluemix/2017/06/building-chatbots-tips-tricks/)
  * [More Tips and Tricks for Building Chatbots](http://blog.4loeser.net/2017/06/more-tips-and-tricks-for-building.html)
+ * [Chatbots: Some tricks with slots in conversations](https://www.ibm.com/blogs/bluemix/2018/02/chatbots-some-tricks-with-slots-in-ibm-watson-conversation/)
+ * [Lively chatbots: Best Practices ](https://www.ibm.com/blogs/bluemix/2017/07/lively-chatbots-best-practices/)
+
+Tutorial:
+ * [Build a database-driven Slackbot](https://console.bluemix.net/docs/tutorials/slack-chatbot-database-watson.html)
 
 # Samples
 The following sample scenarios demonstrate how context variables, intents and entities including system entities can be used for customized dialogs.
