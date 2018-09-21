@@ -1,11 +1,11 @@
-# Using variables with IBM Watson Conversation service
-The [IBM Watson Conversation service](https://www.ibm.com/watson/developercloud/doc/conversation/) on [IBM Cloud](http://www.ibm.com/cloud) is the foundation for building powerful chatbots and dialog-based systems. Core to its flexibility and versatility is a programming API and the ability to pass variables through the cognitive system. It supports user-provided context variables, allows the access to identified intents and entities including the annotations (what was the system thinking). Moreover, it features predefined system entities which can be enabled and significantly simplify detection of numbers, locations, people, dates and more within the ongoing conversation.
+# Using variables with IBM Watson Assistant (formerly Conversation) service
+The [IBM Watson Assistant (Conversation) service](https://console.bluemix.net/docs/services/conversation/index.html#about) on [IBM Cloud](http://www.ibm.com/cloud) is the foundation for building powerful chatbots and dialog-based systems. Core to its flexibility and versatility is a programming API and the ability to pass variables through the cognitive system. It supports user-provided context variables, allows the access to identified intents and entities including the annotations (what was the system thinking). Moreover, it features predefined system entities which can be enabled and significantly simplify detection of numbers, locations, people, dates and more within the ongoing conversation.
 
 In this repository we are going to collect samples that demonstrate how those variables and metadata can be put to productive work.
 
 The samples and the general syntax are described in the following blog posts. They can serve as additional source of information:
  * [Building chatbots: more tips and tricks](https://www.ibm.com/blogs/bluemix/2017/06/building-chatbots-tips-tricks/)
- * [More Tips and Tricks for Building Chatbots](http://blog.4loeser.net/2017/06/more-tips-and-tricks-for-building.html)
+ * [More Tips and Tricks for Building Chatbots](https://blog.4loeser.net/2017/06/more-tips-and-tricks-for-building.html)
  * [Chatbots: Some tricks with slots in conversations](https://www.ibm.com/blogs/bluemix/2018/02/chatbots-some-tricks-with-slots-in-ibm-watson-conversation/)
  * [Lively chatbots: Best Practices ](https://www.ibm.com/blogs/bluemix/2017/07/lively-chatbots-best-practices/)
 
@@ -15,19 +15,25 @@ Tutorial:
 # Samples
 The following sample scenarios demonstrate how context variables, intents and entities including system entities can be used for customized dialogs.
 
-* [Access to system entities](#access-to-system-entities)
-* [Working with Currency](#working-with-currency)
-* [Nested evaluation of variables](#nested-evaluation-of-variables)
-* [Conditions and predicates in the response](#conditions-and-predicates-in-the-response)
-* [Replaced Markers](#replaced-markers)
-* [Random output from variables](#random-output-from-variables)
-* [Zeroes at the Slots](#zeroes-at-the-slots)
-* [Slack URIs as variable](#slack-uris-as-variables)
-* [Check is context variable is defined](#context-variable-defined)
-* [Delete context variables](#delete-context-variables)
+- [Using variables with IBM Watson Assistant (formerly Conversation) service](#using-variables-with-ibm-watson-assistant-formerly-conversation-service)
+- [Samples](#samples)
+    - [Access to system entities](#access-to-system-entities)
+    - [Working with Currency](#working-with-currency)
+    - [Nested evaluation of variables](#nested-evaluation-of-variables)
+    - [Conditions and predicates in the response](#conditions-and-predicates-in-the-response)
+    - [Replaced Markers](#replaced-markers)
+    - [Random output from variables](#random-output-from-variables)
+    - [Zeroes at the Slots](#zeroes-at-the-slots)
+    - [Slack URIs as variables](#slack-uris-as-variables)
+    - [Context Variable Defined](#context-variable-defined)
+    - [Delete Context Variables](#delete-context-variables)
+    - [Collection Projection](#collection-projection)
+- [Documentation and Resources](#documentation-and-resources)
+- [License](#license)
+- [Contribute / Contact Information](#contribute--contact-information)
 
 ### Access to system entities
-The IBM Watson Conversation service supports several system entities. They are predefined entities which can be enabled to allow simple identification of typical user input. The following response string shows how the entities can be accessed to form an answer.
+The IBM Watson Assistant (Conversation) service supports several system entities. They are predefined entities which can be enabled to allow simple identification of typical user input. The following response string shows how the entities can be accessed to form an answer.
 
 Response string:
 `All of <? entities.size() ?> entities: <? entities ?>. They include "sys-location" (<? entities['sys-location'] ?>), "sys-date" (<? entities['sys-date'] ?>), "sys-number" (<? entities['sys-number'] ?>), "sys-person" (<? entities['sys-person'] ?>) and more`
@@ -84,8 +90,15 @@ The following is a reponse string. It checks whether the location of entities in
 <? entities['airport'][0].location[0]<entities['airport'][1].location[0] ?
 'First, then second' : 'Second comes first' ?>
 ```
-
-https://www.ibm.com/watson/developercloud/doc/conversation/expression-language.html
+Note that you can nest the expressions (if first expression, then do, else evaluate next expression):
+```
+{
+  "context": {
+    "number1": "<? @number1:mat3 ? entities.number1[2].literal :
+          @number1:mat2 ? entities.number1[1].literal : entities.number1[0].literal ?>"
+  }
+}
+```
 
 ### Replaced Markers
 An alternative to embedding expressions into responses is to use special markers in the regular text:   
@@ -141,11 +154,28 @@ At the end of processing input it often is necessary to clean up or reset the pr
 }
 ```
 
+### Collection Projection
+A [collection projection](https://console.bluemix.net/docs/services/conversation/dialog-methods.html#arrays), by definition, extracts a subcollection from an array of values. The operator is denoted with a `!` and is useful in many ways.
+
+The following expression as part of an output object would print an array of the detected entity values for **myentity**.
+```
+{ "text": "<? entities['myentity'].![value] ?>"}
+```
+
+This expression would assign a comma-separated list of the words (literals) that are part of the input message:
+```
+{
+  "context": {
+    "myvariable": "<? entities['myentity'].![literal].join(', ')  ?>"
+  }
+}
+```
+
 # Documentation and Resources
 Here are some useful links to documentation and other resources:
-* Watson Conversation service: https://www.ibm.com/watson/developercloud/doc/conversation/index.html
-* Watson Conversation service, expression language: https://www.ibm.com/watson/developercloud/doc/conversation/expression-language.html
-* API for Watson Conversation service: https://www.ibm.com/watson/developercloud/conversation/api/v1/#introduction
+* Watson Assistant (Conversation) service: https://console.bluemix.net/docs/services/conversation/index.html
+* Watson Assistant (Conversation) service, expression language: https://console.bluemix.net/docs/services/conversation/expression-language.html
+* API for Watson Assistant (Conversation) service: https://www.ibm.com/watson/developercloud/assistant/api/v1/curl.html?curl
 * Python SDK, Watson Developer Cloud: https://github.com/watson-developer-cloud/python-sdk
 * Node SDK, Watson Developer Cloud: https://github.com/watson-developer-cloud/node-sdk
 * Java SDK, Watson Developer Cloud: https://github.com/watson-developer-cloud/java-sdk
@@ -159,4 +189,4 @@ The samples are provided on a "as-is" basis and are un-supported. Use with care.
 If you have found errors or some instructions are not working anymore, then please open an GitHub issue or, better, create a pull request with your desired changes.
 
 You can find more tutorials and sample code at:
-https://ibm-bluemix.github.io/
+https://ibm-cloud.github.io/
