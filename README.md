@@ -153,6 +153,19 @@ At the end of processing input it often is necessary to clean up or reset the pr
   }
 }
 ```
+UPDATE:
+
+
+For those on recent API versions of Watson Assistant:
+
+Set the variable to null. Here is the doc on ["Deleting a context variable"](https://cloud.ibm.com/docs/services/assistant?topic=assistant-dialog-runtime#dialog-runtime-context-delete).
+```
+{
+  "context": {
+    "myvariable": null
+  }
+}
+```
 
 ### Collection Projection
 A [collection projection](https://console.bluemix.net/docs/services/conversation/dialog-methods.html#arrays), by definition, extracts a subcollection from an array of values. The operator is denoted with a `!` and is useful in many ways.
