@@ -1,5 +1,5 @@
 # Using variables with IBM Watson Assistant (formerly Conversation) service
-The [IBM Watson Assistant (Conversation) service](https://console.bluemix.net/docs/services/conversation/index.html#about) on [IBM Cloud](http://www.ibm.com/cloud) is the foundation for building powerful chatbots and dialog-based systems. Core to its flexibility and versatility is a programming API and the ability to pass variables through the cognitive system. It supports user-provided context variables, allows the access to identified intents and entities including the annotations (what was the system thinking). Moreover, it features predefined system entities which can be enabled and significantly simplify detection of numbers, locations, people, dates and more within the ongoing conversation.
+The [IBM Watson Assistant (Conversation) service](https://cloud.ibm.com/docs/services/assistant?topic=assistant-index) on [IBM Cloud](http://www.ibm.com/cloud) is the foundation for building powerful chatbots and dialog-based systems. Core to its flexibility and versatility is a programming API and the ability to pass variables through the cognitive system. It supports user-provided context variables, allows the access to identified intents and entities including the annotations (what was the system thinking). Moreover, it features predefined system entities which can be enabled and significantly simplify detection of numbers, locations, people, dates and more within the ongoing conversation.
 
 In this repository we are going to collect samples that demonstrate how those variables and metadata can be put to productive work.
 
@@ -10,7 +10,7 @@ The samples and the general syntax are described in the following blog posts. Th
  * [Lively chatbots: Best Practices ](https://www.ibm.com/blogs/bluemix/2017/07/lively-chatbots-best-practices/)
 
 Tutorial:
- * [Build a database-driven Slackbot](https://console.bluemix.net/docs/tutorials/slack-chatbot-database-watson.html)
+ * [Build a database-driven Slackbot](https://cloud.ibm.com/docs/tutorials?topic=solution-tutorials-slack-chatbot-database-watson)
 
 # Samples
 The following sample scenarios demonstrate how context variables, intents and entities including system entities can be used for customized dialogs.
@@ -33,7 +33,7 @@ The following sample scenarios demonstrate how context variables, intents and en
 - [Contribute / Contact Information](#contribute--contact-information)
 
 ### Access to system entities
-The IBM Watson Assistant (Conversation) service supports several system entities. They are predefined entities which can be enabled to allow simple identification of typical user input. The following response string shows how the entities can be accessed to form an answer.
+The IBM Watson Assistant service supports several system entities. They are predefined entities which can be enabled to allow simple identification of typical user input. The following response string shows how the entities can be accessed to form an answer.
 
 Response string:
 `All of <? entities.size() ?> entities: <? entities ?>. They include "sys-location" (<? entities['sys-location'] ?>), "sys-date" (<? entities['sys-date'] ?>), "sys-number" (<? entities['sys-number'] ?>), "sys-person" (<? entities['sys-person'] ?>) and more`
@@ -62,7 +62,7 @@ Returned:
 > You have 54.0 USD
 
 ### Nested evaluation of variables
-Sometimes it is necessary to first evaluate one variable and then use the result as input to another evaluation. In some programming / scripting language there is a special method or operator for this. An example is the [`eval` function](https://docs.python.org/3.5/library/functions.html#eval) in Python. But how can you do something like this in Watson Conversation? There, evaluations are done inside the [`<? ?>` expression](https://www.ibm.com/watson/developercloud/doc/conversation/expression-language.html#evaluation).
+Sometimes it is necessary to first evaluate one variable and then use the result as input to another evaluation. In some programming / scripting language there is a special method or operator for this. An example is the [`eval` function](https://docs.python.org/3.5/library/functions.html#eval) in Python. But how can you do something like this in Watson Assistant? There, evaluations are done inside the [`<? ?>` expression](https://cloud.ibm.com/docs/services/assistant?topic=assistant-dialog-methods).
 
 
 The upper dialog node consists of an empty response (output). Only the context is evaluated and a new value assigned to the variables `access` and `result` (based on a computation):
@@ -129,12 +129,12 @@ Here is a random entity:
 In the code the global entity array as part of the dialog metadata is used. A random number within the range of the array size is computed. The entity value is then accessed and printed.
 
 ### Zeroes at the Slots
-[Slots](https://console.bluemix.net/docs/services/conversation/dialog-build.html#slots) are a great way to gather several pieces of information and to easily declare what is needed. However, sometimes "ease of use" and (mathematical) logic are not friendly to each other. The following is such an example: [Waiting for `@sys-number` to accept a `0` (zero)](https://stackoverflow.com/questions/45302644/ibm-watson-slots-wont-accept-0)    
+[Slots](https://cloud.ibm.com/docs/services/assistant?topic=assistant-dialog-slots) are a great way to gather several pieces of information and to easily declare what is needed. However, sometimes "ease of use" and (mathematical) logic are not friendly to each other. The following is such an example: [Waiting for `@sys-number` to accept a `0` (zero)](https://stackoverflow.com/questions/45302644/ibm-watson-slots-wont-accept-0)    
 
-The condition `@sys-number` is in fact a short hand syntax for condition `entities['sys-number'].value`. When `0` is sent the condition is evaluated to `false` as `0` is treated as a `false` by the expression language evaluator in Watson Conversation Service. Now this is not a desired behavior in this case. To prevent this, you can use `entities['sys-number']` in the condition that will return `true` every time `@sys-number` entity is recognized in the input. The [WCS documentation has some related usage tips](https://console.bluemix.net/docs/services/conversation/system-entities.html#sys-number).
+The condition `@sys-number` is in fact a short hand syntax for condition `entities['sys-number'].value`. When `0` is sent the condition is evaluated to `false` as `0` is treated as a `false` by the expression language evaluator in Watson Assistant. Now this is not a desired behavior in this case. To prevent this, you can use `entities['sys-number']` in the condition that will return `true` every time `@sys-number` entity is recognized in the input. The [Assistant documentation has some related usage tips](https://cloud.ibm.com/docs/services/assistant?topic=assistant-system-entities).
 
 ### Slack URIs as variables
-Lately, I have been using Slack integrations with Watson Conversation. One is the [Conversation connector](https://github.com/watson-developer-cloud/conversation-connector). When trying to retrieve and identify URIs, e.g. web addresses or email addresses, coming from Slack as a [patterned entity in Watson Conversation](https://console.bluemix.net/docs/services/conversation/entities.html#creating-entities), I initially failed. The reason is that Slack formats the URIs into a style like `<https://blog.4loeser.net|blog.4loeser.net>`. Thus, I am using the following pattern to define email and web address entities: `<[A-Za-z0-9._|:%@\/]+>`.
+I have been using Slack integrations with Watson Assistant. When trying to retrieve and identify URIs, e.g. web addresses or email addresses, coming from Slack as a patterned entity, I initially failed. The reason is that Slack formats the URIs into a style like `<https://blog.4loeser.net|blog.4loeser.net>`. Thus, I am using the following pattern to define email and web address entities: `<[A-Za-z0-9._|:%@\/]+>`.
 
 ### Context Variable Defined
 Sometimes it is not clear whether a certain value or context variable has been entered. One example is when working with slots and a handler is used to exit the input process. To check whether a context variable has been defined and to give a conditional answer, the following check can be used:   
@@ -144,7 +144,7 @@ Sometimes it is not clear whether a certain value or context variable has been e
 The question mark checks for existence and if present processes the first answer and, if not, the second option.
 
 ### Delete Context Variables
-At the end of processing input it often is necessary to clean up or reset the processing environment. This can be done by setting context variables to empty or null values. However, it is quite effective to [remove the variable](https://console.bluemix.net/docs/services/conversation/dialog-runtime.html#context-delete), so the environment is fresh again:
+At the end of processing input it often is necessary to clean up or reset the processing environment. This can be done by setting context variables to empty or null values. However, it is quite effective to [remove the variable](https://cloud.ibm.com/docs/services/assistant?topic=assistant-dialog-runtime#dialog-runtime-context-delete), so the environment is fresh again:
 ```
 {
   "output": {
@@ -168,7 +168,7 @@ Set the variable to null. Here is the doc on ["Deleting a context variable"](htt
 ```
 
 ### Collection Projection
-A [collection projection](https://console.bluemix.net/docs/services/conversation/dialog-methods.html#arrays), by definition, extracts a subcollection from an array of values. The operator is denoted with a `!` and is useful in many ways.
+A [collection projection](https://cloud.ibm.com/docs/services/assistant?topic=assistant-dialog-methods#dialog-methods-collection-projection), by definition, extracts a subcollection from an array of values. The operator is denoted with a `!` and is useful in many ways.
 
 The following expression as part of an output object would print an array of the detected entity values for **myentity**.
 ```
@@ -186,9 +186,8 @@ This expression would assign a comma-separated list of the words (literals) that
 
 # Documentation and Resources
 Here are some useful links to documentation and other resources:
-* Watson Assistant (Conversation) service: https://console.bluemix.net/docs/services/conversation/index.html
-* Watson Assistant (Conversation) service, expression language: https://console.bluemix.net/docs/services/conversation/expression-language.html
-* API for Watson Assistant (Conversation) service: https://www.ibm.com/watson/developercloud/assistant/api/v1/curl.html?curl
+* Watson Assistant service: https://cloud.ibm.com/docs/services/assistant?topic=assistant-getting-started
+* Watson Assistant service, expression language: https://cloud.ibm.com/docs/services/assistant?topic=assistant-dialog-methods
 * Python SDK, Watson Developer Cloud: https://github.com/watson-developer-cloud/python-sdk
 * Node SDK, Watson Developer Cloud: https://github.com/watson-developer-cloud/node-sdk
 * Java SDK, Watson Developer Cloud: https://github.com/watson-developer-cloud/java-sdk
