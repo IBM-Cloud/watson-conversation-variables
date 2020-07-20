@@ -10,7 +10,7 @@ The samples and the general syntax are described in the following blog posts. Th
  * [Lively chatbots: Best Practices ](https://www.ibm.com/blogs/bluemix/2017/07/lively-chatbots-best-practices/)
 
 Tutorial:
- * [Build a database-driven Slackbot](https://cloud.ibm.com/docs/tutorials?topic=solution-tutorials-slack-chatbot-database-watson)
+ * [Build a database-driven Slackbot](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-slack-chatbot-database-watson)
 
 # Samples
 The following sample scenarios demonstrate how context variables, intents and entities including system entities can be used for customized dialogs.
@@ -199,6 +199,3 @@ The samples are provided on a "as-is" basis and are un-supported. Use with care.
 
 # Contribute / Contact Information
 If you have found errors or some instructions are not working anymore, then please open an GitHub issue or, better, create a pull request with your desired changes.
-
-You can find more tutorials and sample code at:
-https://ibm-cloud.github.io/
